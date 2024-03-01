@@ -19,7 +19,7 @@ export const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
     if (!orgId) return null;
 
     mutate({
-      tile: "untitled",
+      title: "untitled",
       orgId: orgId,
     })
       .then((id) => {

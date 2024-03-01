@@ -17,7 +17,7 @@ export const EmptyBoards = () => {
     if (!organization) return null;
 
     mutate({
-      tile: "untitled",
+      title: "untitled",
       orgId: organization?.id,
     })
       .then((id) => {

@@ -2,8 +2,8 @@ import { v } from "convex/values";
 import { defineSchema, defineTable } from "convex/server";
 
 export default defineSchema({
-  baords: defineTable({
-    tile: v.string(),
+  boards: defineTable({
+    title: v.string(),
     orgId: v.string(),
     authorId: v.string(),
     authorName: v.string(),
@@ -11,7 +11,7 @@ export default defineSchema({
   })
     .index("byOrgId", ["orgId"])
     .searchIndex("search_title", {
-      searchField: "tile",
+      searchField: "title",
       filterFields: ["orgId"],
     }),
 });
