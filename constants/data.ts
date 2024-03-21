@@ -1,12 +1,14 @@
 import { NavItem } from "@/types";
 
 export type User = {
-  id: number;
+  _id: any;
+  _creationTime: any;
   name: string;
-  company: string;
-  role: string;
-  verified: boolean;
-  status: string;
+  phone: string;
+  cpf: string;
+  email: string;
+  orgId: string;
+  numCars: string;
 };
 export const users: User[] = [
   {

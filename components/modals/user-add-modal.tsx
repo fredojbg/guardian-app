@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { FormEventHandler, useEffect, useState } from "react";
-import { useRenameModal } from "@/store/use-rename-modal";
 import {
   DialogContent,
   Dialog,

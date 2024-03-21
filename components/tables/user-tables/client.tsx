@@ -9,34 +9,30 @@ import { useRouter } from "next/navigation";
 import { columns } from "./columns";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { NewBoardButton } from "@/app/(dashboard)/_components/new-board-button";
+
 import { NewUserButton } from "@/app/(dashboard)/contacts/_components/new-user-button";
-import { UserAddModal } from "@/components/modals/user-add-modal";
-import { useAddUserModal } from "@/store/use-add-user-modal";
 
 interface ProductsClientProps {
   orgId: string;
   data: User[];
 }
 
-export const UserClient: React.FC<ProductsClientProps> = ({ orgId, data }) => {
-  const router = useRouter();
-  const datas = useQuery(api.contacts.get, {
+export const UserClient: React.FC<ProductsClientProps> = ({ orgId }) => {
+  const userData: User[] | undefined = useQuery(api.contacts.get, {
     orgId,
   });
+
+  const users: User[] = userData || [];
 
   return (
     <>
       <div className="flex items-start justify-between">
-        <Heading
-          title={`Users (${data.length})`}
-          description="Manage users (Client side table functionalities.)"
-        />
+        <Heading title={`Clientes (${users?.length})`} description="" />
 
         <NewUserButton orgId={orgId} />
       </div>
       <Separator />
-      <DataTable searchKey="name" columns={columns} data={data} />
+      <DataTable searchKey="name" columns={columns} data={users} />
     </>
   );
 };

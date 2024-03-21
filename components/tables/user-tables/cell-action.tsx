@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { User } from "@/constants/data";
-import { Edit, MoreHorizontal, Trash } from "lucide-react";
+import { Edit, MoreHorizontal, NotepadText, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -49,6 +49,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" /> Delete
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setOpen(true)}>
+            <NotepadText className="mr-2 h-4 w-4" /> Gerar Nota Fiscal
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
