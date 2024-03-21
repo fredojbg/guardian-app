@@ -24,4 +24,27 @@ export default defineSchema({
     .index("by_user_org", ["userId", "orgId"])
     .index("by_user_board", ["userId", "boardId"])
     .index("by_user_board_org", ["userId", "boardId", "orgId"]),
+
+  contacts: defineTable({
+    name: v.string(),
+    orgId: v.string(),
+    phone: v.string(),
+    cpf: v.string(),
+    email: v.string(),
+    numCars: v.number(),
+  })
+    .index("byOrgId", ["orgId"])
+    .searchIndex("search_cpf", {
+      searchField: "cpf",
+      filterFields: ["orgId"],
+    }),
+
+  cars: defineTable({
+    model: v.string(),
+    brand: v.string(),
+    year: v.number(),
+    contactId: v.id("contacts"),
+  })
+    .index("byContactId", ["contactId"])
+    .index("byMake", ["brand"]),
 });

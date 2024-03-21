@@ -8,6 +8,8 @@ import { Poppins } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { DashboardNav } from "../dashboard-nav";
+import { navItems } from "@/constants/data";
 
 const font = Poppins({ subsets: ["latin"], weight: "600" });
 
@@ -47,52 +49,7 @@ export const OrgSidebar = () => {
         }}
       />
       <div className="space-y-1 w-full">
-        <Button
-          asChild
-          variant={favorites ? "ghost" : "secondary"}
-          size={"lg"}
-          className="font-normal justify-start px-2 w-full"
-        >
-          <Link href="/">
-            <LayoutDashboard className="h-4 w-4 mr-2" />
-            Dasboard
-          </Link>
-        </Button>
-        {/* 
-        <Button
-          asChild
-          variant={favorites ? "secondary" : "ghost"}
-          size={"lg"}
-          className="font-normal justify-start px-2 w-full"
-        >
-          <Link
-            href={{
-              pathname: "/",
-              query: {
-                favorites: true,
-              },
-            }}
-          >
-            <Star className="h-4 w-4 mr-2" />
-            Favorite Boards
-          </Link>
-        </Button> */}
-
-        <Button
-          asChild
-          variant={favorites ? "secondary" : "ghost"}
-          size={"lg"}
-          className="font-normal justify-start px-2 w-full"
-        >
-          <Link
-            href={{
-              pathname: "/contacts",
-            }}
-          >
-            <User className="h-4 w-4 mr-2" />
-            Contatos
-          </Link>
-        </Button>
+        <DashboardNav items={navItems} />
       </div>
     </div>
   );
