@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { EmptyOrg } from "./_components/empty-org";
 import { useOrganization } from "@clerk/nextjs";
-import { clerkClient } from "@clerk/nextjs";
-import { BoardList } from "./_components/board-list";
 import { RecentSales } from "@/components/recent-sales";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
@@ -27,35 +25,12 @@ interface DashboardPageProps {
 }
 
 const DashboardPage = ({ searchParams }: DashboardPageProps) => {
-  // const instance = clerkClient.users?.getUserList();
-  const handleCreateNewUser = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/api/createuser", {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      });
-      console.log(res);
-
-      if (res.ok) {
-        console.log("Yeai!");
-      } else {
-        console.log("Oops! Something is wrong.");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const { organization } = useOrganization();
   return (
     <div className="flex-1 h-[calc(100vh-80px)] p-6">
       {!organization ? (
         <EmptyOrg />
       ) : (
-        // <BoardList orgId={organization.id} query={searchParams} />
-        // <RecentSales />
         <ScrollArea className="h-full">
           <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
             <div className="flex items-center justify-between space-y-2">
@@ -64,7 +39,7 @@ const DashboardPage = ({ searchParams }: DashboardPageProps) => {
               </h2>
               <div className="hidden md:flex items-center space-x-2">
                 <CalendarDateRangePicker />
-                <Button onClick={handleCreateNewUser}>Download</Button>
+                <Button>Download</Button>
               </div>
             </div>
             <Tabs defaultValue="overview" className="space-y-4">

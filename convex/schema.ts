@@ -31,11 +31,15 @@ export default defineSchema({
     phone: v.string(),
     cpf: v.string(),
     email: v.string(),
-    numCars: v.number(),
+    numCars: v.string(),
   })
     .index("byOrgId", ["orgId"])
     .searchIndex("search_cpf", {
       searchField: "cpf",
+      filterFields: ["orgId"],
+    })
+    .searchIndex("search_name", {
+      searchField: "name",
       filterFields: ["orgId"],
     }),
 

@@ -7,13 +7,23 @@ import { User } from "@/constants/data";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { columns } from "./columns";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { NewBoardButton } from "@/app/(dashboard)/_components/new-board-button";
+import { NewUserButton } from "@/app/(dashboard)/contacts/_components/new-user-button";
+import { UserAddModal } from "@/components/modals/user-add-modal";
+import { useAddUserModal } from "@/store/use-add-user-modal";
 
 interface ProductsClientProps {
+  orgId: string;
   data: User[];
 }
 
-export const UserClient: React.FC<ProductsClientProps> = ({ data }) => {
+export const UserClient: React.FC<ProductsClientProps> = ({ orgId, data }) => {
   const router = useRouter();
+  const datas = useQuery(api.contacts.get, {
+    orgId,
+  });
 
   return (
     <>
@@ -22,12 +32,8 @@ export const UserClient: React.FC<ProductsClientProps> = ({ data }) => {
           title={`Users (${data.length})`}
           description="Manage users (Client side table functionalities.)"
         />
-        <Button
-          className="text-xs md:text-sm"
-          onClick={() => router.push(`/dashboard/user/new`)}
-        >
-          <Plus className="mr-2 h-4 w-4" /> Add New
-        </Button>
+
+        <NewUserButton orgId={orgId} />
       </div>
       <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />

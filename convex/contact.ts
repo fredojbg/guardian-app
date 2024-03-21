@@ -8,7 +8,7 @@ export const create = mutation({
     phone: v.string(),
     cpf: v.string(),
     email: v.string(),
-    numCars: v.number(),
+    numCars: v.string(),
   },
   handler: async (ctx, args) => {
     const indentity = await ctx.auth.getUserIdentity();
@@ -32,24 +32,13 @@ export const create = mutation({
 
 export const remove = mutation({
   args: {
-    id: v.id("boards"),
+    id: v.id("contacts"),
   },
   handler: async (ctx, args) => {
     const indentity = await ctx.auth.getUserIdentity();
 
     if (!indentity) {
       throw new Error("Not logged in");
-    }
-
-    const existingFavorite = await ctx.db
-      .query("userFavorites")
-      .withIndex("by_user_board", (q) =>
-        q.eq("userId", indentity.subject).eq("boardId", args.id)
-      )
-      .unique();
-
-    if (existingFavorite) {
-      await ctx.db.delete(existingFavorite._id);
     }
 
     await ctx.db.delete(args.id);
@@ -58,8 +47,13 @@ export const remove = mutation({
 
 export const update = mutation({
   args: {
-    id: v.id("boards"),
-    title: v.string(),
+    id: v.id("contacts"),
+    name: v.string(),
+    orgId: v.string(),
+    phone: v.string(),
+    cpf: v.string(),
+    email: v.string(),
+    numCars: v.string(),
   },
   handler: async (ctx, args) => {
     const indentity = await ctx.auth.getUserIdentity();
@@ -68,18 +62,12 @@ export const update = mutation({
       throw new Error("Not logged in");
     }
 
-    const title = args.title.trim();
-
-    if (!title) {
-      throw new Error("Title is required");
-    }
-
-    if (title.length > 60) {
-      throw new Error("Title cannot be longer than 60");
-    }
-
     const board = await ctx.db.patch(args.id, {
-      title: args.title,
+      name: args.name,
+      phone: args.phone,
+      cpf: args.cpf,
+      email: args.email,
+      numCars: args.numCars,
     });
 
     return board;
