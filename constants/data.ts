@@ -125,22 +125,10 @@ export const navItems: NavItem[] = [
     icon: "user",
     label: "Contatos",
   },
-  // {
-  //   title: "Employee",
-  //   href: "/dashboard/employee",
-  //   icon: "employee",
-  //   label: "employee",
-  // },
-  // {
-  //   title: "Profile",
-  //   href: "/dashboard/profile",
-  //   icon: "profile",
-  //   label: "profile",
-  // },
-  // {
-  //   title: "Kanban",
-  //   href: "/dashboard/kanban",
-  //   icon: "kanban",
-  //   label: "kanban",
-  // },
+  {
+    title: "Vendas",
+    href: "/dashboard/sold-out",
+    icon: "circleDollarSignIcon",
+    label: "Vendas",
+  },
 ];
