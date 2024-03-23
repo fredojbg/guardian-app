@@ -33,6 +33,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { Input } from "@/components/ui/input";
 import {
   Table,
@@ -44,6 +45,8 @@ import {
 } from "@/components/ui/table";
 import { columns } from "./columns";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
+import { Label } from "@/components/ui/label";
+import { useAddSaleModal } from "@/store/use-add-sale-modal";
 
 const data: Payment[] = [
   {
@@ -86,6 +89,7 @@ export type Payment = {
 };
 
 export function SalesTable() {
+  const { onOpen } = useAddSaleModal();
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -136,7 +140,9 @@ export function SalesTable() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>Venta</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onOpen("te")}>
+                Venta
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Assinatura</DropdownMenuItem>
             </DropdownMenuContent>

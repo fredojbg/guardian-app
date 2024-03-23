@@ -1,5 +1,6 @@
 "use client";
 
+import { AddSaleModal } from "@/components/modals/add-sale-modal";
 import { RenameModal } from "@/components/modals/rename-modal";
 import { UserAddModal } from "@/components/modals/user-add-modal";
 import { useEffect, useState } from "react";
@@ -17,6 +18,7 @@ export const ModalProvider = () => {
     <>
       <RenameModal />
       <UserAddModal />
+      <AddSaleModal />
     </>
   );
 };
