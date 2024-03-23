@@ -51,4 +51,24 @@ export default defineSchema({
   })
     .index("byContactId", ["contactId"])
     .index("byMake", ["brand"]),
+
+  services: defineTable({
+    orgId: v.string(),
+    name: v.string(),
+    description: v.string(),
+    price: v.number(),
+  }).index("byOrgId", ["orgId"]),
+
+  sales: defineTable({
+    orgId: v.string(),
+    productId: v.id("services"),
+    customerId: v.id("contacts"),
+    saleDate: v.string(),
+    saleAmount: v.number(),
+    paymentMethod: v.string(),
+  })
+    .index("byOrgId", ["orgId"])
+    .index("byProductId", ["productId"])
+    .index("byCustomerId", ["customerId"])
+    .index("bySaleDate", ["saleDate"]),
 });
