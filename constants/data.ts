@@ -127,7 +127,7 @@ export const navItems: NavItem[] = [
   },
   {
     title: "Vendas",
-    href: "/dashboard/sold-out",
+    href: "/sales",
     icon: "circleDollarSignIcon",
     label: "Vendas",
   },
