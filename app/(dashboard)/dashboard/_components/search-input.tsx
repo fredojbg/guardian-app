@@ -19,20 +19,19 @@ export const SearchInput = () => {
   };
 
   useEffect(() => {
-    const url = queryString.stringifyUrl(
-      {
-        url: "/",
-        query: {
-          search: debouncedValue,
-        },
-      },
-      {
-        skipNull: true,
-        skipEmptyString: true,
-      }
-    );
-
-    router.push(url);
+    // const url = queryString.stringifyUrl(
+    //   {
+    //     url: "/",
+    //     query: {
+    //       search: debouncedValue,
+    //     },
+    //   },
+    //   {
+    //     skipNull: true,
+    //     skipEmptyString: true,
+    //   }
+    // );
+    // router.push(url);
   }, [debouncedValue]);
 
   return (

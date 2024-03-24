@@ -3,7 +3,7 @@
 import { UserClient } from "@/components/tables/user-tables/client";
 import { users } from "@/constants/data";
 import { useOrganization } from "@clerk/nextjs";
-import { EmptyOrg } from "../_components/empty-org";
+import { EmptyOrg } from "../dashboard/_components/empty-org";
 import { UserAddModal } from "@/components/modals/user-add-modal";
 
 const breadcrumbItems = [{ title: "User", link: "/dashboard/user" }];
