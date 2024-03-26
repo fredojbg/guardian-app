@@ -27,19 +27,19 @@ interface DashboardPageProps {
 const DashboardPage = ({ searchParams }: DashboardPageProps) => {
   const { organization } = useOrganization();
   return (
-    <div className="flex-1 h-[calc(100vh-80px)] p-6">
+    <div className="flex-1 h-[calc(100vh-80px)] pl-6 pr-6">
       {!organization ? (
         <EmptyOrg />
       ) : (
         <ScrollArea className="h-full">
-          <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
+          <div className="flex-1 space-y-4 ">
             <div className="flex items-center justify-between space-y-2">
               <h2 className="text-3xl font-bold tracking-tight">
                 Olá, Bem vindo 👋
               </h2>
               <div className="hidden md:flex items-center space-x-2">
                 <CalendarDateRangePicker />
-                <Button>Download</Button>
+                <Button>Buscar</Button>
               </div>
             </div>
             <Tabs defaultValue="overview" className="space-y-4">
