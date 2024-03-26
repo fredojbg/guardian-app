@@ -71,4 +71,21 @@ export default defineSchema({
     .index("byProductId", ["productId"])
     .index("byCustomerId", ["customerId"])
     .index("bySaleDate", ["saleDate"]),
+
+  appointments: defineTable({
+    orgId: v.string(),
+    title: v.string(),
+    note: v.string(),
+    userId: v.string(),
+    appointmentDate: v.string(),
+    completed: v.boolean(),
+    canceled: v.boolean(),
+    services: v.object({
+      serviceId: v.id("services"),
+    }),
+    customerId: v.id("contacts"),
+  })
+    .index("byAppointmentDate", ["appointmentDate"]) // Índice por data do agendamento
+    .index("byCompleted", ["completed"]) // Índice por status de conclusão
+    .index("byCanceled", ["canceled"]), // Índice por status de cancelamento
 });
