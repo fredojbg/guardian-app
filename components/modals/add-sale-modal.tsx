@@ -12,6 +12,7 @@ import { useAddSaleModal } from "@/store/use-add-sale-modal";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { InputContactsList } from "../inputs/contacts-list";
 
 export const AddSaleModal = () => {
   const { isOpen, initialValues, onOpen, onClose } = useAddSaleModal();
@@ -37,6 +38,9 @@ export const AddSaleModal = () => {
               Username
             </Label>
             <Input id="username" value="@peduarte" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <InputContactsList orgId="org1" />
           </div>
         </div>
         <SheetFooter>
